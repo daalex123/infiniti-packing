@@ -1,0 +1,309 @@
+/**
+ * Glassmorphism 2.0 — subtle frost, tactile top-edge highlight, soft ambient depth.
+ * Respects prefers-reduced-motion (no backdrop blur).
+ */
+
+/* Uppercase section labels above headings — larger & heavier than token `label-md`. */
+.section-eyebrow {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .section-eyebrow {
+    font-size: 1rem;
+    letter-spacing: 0.11em;
+  }
+}
+
+/* Smooth transitions between header states (hero overlay → scrolled glass). */
+.site-header {
+  transition:
+    background-color 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+    border-color 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+    box-shadow 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+    -webkit-backdrop-filter 0s linear,
+    backdrop-filter 0s linear,
+    min-height 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+    padding 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.site-header .header-logo-link,
+.site-header nav[aria-label="Primary"],
+.site-header .header-nav-link,
+.site-header .header-icon-btn {
+  transition:
+    background-color 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+    border-color 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+    color 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+    box-shadow 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+    padding 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+    -webkit-backdrop-filter 0s linear,
+    backdrop-filter 0s linear,
+    transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+    opacity 0.35s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.site-header .header-nav-link::after {
+  transition:
+    opacity 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+    background-color 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+    transform 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+    width 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.site-header .header-logo {
+  transition:
+    height 0.45s cubic-bezier(0.33, 1, 0.68, 1),
+    filter 0.45s cubic-bezier(0.33, 1, 0.68, 1),
+    opacity 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.site-header.glass-header:not(.header--over-hero):not(.header--shrunk-home) {
+  background-color: rgba(252, 252, 253, 0.52);
+  -webkit-backdrop-filter: blur(22px) saturate(1.2);
+  backdrop-filter: blur(22px) saturate(1.2);
+  border-bottom-color: rgba(255, 255, 255, 0.42);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.68),
+    0 10px 40px rgba(15, 23, 42, 0.055),
+    0 2px 10px rgba(15, 23, 42, 0.04);
+}
+
+.site-header.glass-header.header--compact:not(.header--over-hero):not(.header--shrunk-home) {
+  background-color: rgba(252, 252, 253, 0.66);
+  -webkit-backdrop-filter: blur(18px) saturate(1.14);
+  backdrop-filter: blur(18px) saturate(1.14);
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    0 14px 44px rgba(15, 23, 42, 0.07),
+    0 3px 12px rgba(15, 23, 42, 0.045);
+}
+
+.glass-scrim {
+  background-color: rgba(8, 10, 14, 0.42) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(1.05);
+  backdrop-filter: blur(10px) saturate(1.05);
+}
+
+.glass-panel {
+  background-color: rgba(255, 255, 255, 0.48) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(1.25);
+  backdrop-filter: blur(32px) saturate(1.25);
+  border-color: rgba(255, 255, 255, 0.38) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.78),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 28px 90px rgba(15, 23, 42, 0.11),
+    0 10px 32px rgba(15, 23, 42, 0.06) !important;
+}
+
+.glass-card {
+  background-color: rgba(255, 255, 255, 0.36) !important;
+  -webkit-backdrop-filter: blur(48px) saturate(1.28);
+  backdrop-filter: blur(48px) saturate(1.28);
+  border-color: rgba(255, 255, 255, 0.48) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 12px 40px rgba(15, 23, 42, 0.07),
+    0 4px 14px rgba(15, 23, 42, 0.04) !important;
+}
+
+.glass-card--dark {
+  background-color: rgba(255, 255, 255, 0.07) !important;
+  -webkit-backdrop-filter: blur(44px) saturate(1.2);
+  backdrop-filter: blur(44px) saturate(1.2);
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 16px 48px rgba(0, 0, 0, 0.18) !important;
+}
+
+.header-icon-btn.glass-icon-btn {
+  background-color: rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(12px) saturate(1.1);
+  backdrop-filter: blur(12px) saturate(1.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
+/* About: partnership photography — slow drift + glassy rim (Ken Burns–lite). */
+.about-partnership-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  isolation: isolate;
+  background-color: #1a1a1a;
+}
+
+.about-partnership-frame__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  object-fit: cover;
+  transform: scale(1.08);
+  transform-origin: 52% 42%;
+  will-change: transform;
+}
+
+/* Home about: larger, punchier photo (overrides default tint). */
+.about-partnership-frame--hero .about-partnership-frame__img {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.about-partnership-frame--hero::before {
+  background: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.32) 0%,
+    rgba(255, 255, 255, 0.08) 32%,
+    transparent 48%,
+    rgba(255, 248, 250, 0.12) 78%,
+    rgba(138, 15, 77, 0.06) 100%
+  );
+}
+
+.about-partnership-frame--hero::after {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.58),
+    inset 0 -36px 56px -20px rgba(0, 0, 0, 0.1);
+}
+
+.about-partnership-frame--hero {
+  background-color: #f4e8ef;
+  border-radius: 1.25rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .about-partnership-frame__img {
+    animation: about-partnership-drift 18s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes about-partnership-drift {
+  0% {
+    transform: scale(1.05) translate(0%, 0%);
+  }
+  100% {
+    transform: scale(1.12) translate(-2.5%, 1.2%);
+  }
+}
+
+.about-partnership-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.16) 0%,
+    transparent 38%,
+    rgba(138, 15, 77, 0.12) 88%,
+    rgba(20, 12, 18, 0.22) 100%
+  );
+}
+
+.about-partnership-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    inset 0 -48px 90px -28px rgba(0, 0, 0, 0.2);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .about-partnership-frame--enter {
+    animation: about-partnership-enter 1.05s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+@keyframes about-partnership-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .site-header .header-logo-link,
+  .site-header nav[aria-label="Primary"],
+  .site-header .header-nav-link,
+  .site-header .header-nav-link::after,
+  .site-header .header-icon-btn,
+  .site-header .header-logo {
+    transition-duration: 0.01ms !important;
+  }
+
+  .site-header.glass-header:not(.header--over-hero):not(.header--shrunk-home),
+  .site-header.glass-header.header--compact:not(.header--over-hero):not(.header--shrunk-home),
+  .glass-scrim,
+  .glass-panel,
+  .glass-card,
+  .glass-card--dark,
+  .header-icon-btn.glass-icon-btn {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .site-header.glass-header:not(.header--over-hero):not(.header--shrunk-home) {
+    background-color: rgba(252, 252, 253, 0.96);
+  }
+
+  body.inner-page .site-header.glass-header:not(.header--over-hero):not(.header--shrunk-home) {
+    background-color: #8a0f4d !important;
+  }
+
+  .site-header.glass-header.header--compact:not(.header--over-hero):not(.header--shrunk-home) {
+    background-color: rgba(252, 252, 253, 0.98);
+  }
+
+  body.inner-page .site-header.glass-header.header--compact:not(.header--over-hero):not(.header--shrunk-home) {
+    background-color: #8a0f4d !important;
+  }
+
+  .glass-panel {
+    background-color: rgba(255, 255, 255, 0.97) !important;
+  }
+
+  .glass-card {
+    background-color: rgba(255, 255, 255, 0.94) !important;
+  }
+
+  .glass-card--dark {
+    background-color: rgba(255, 255, 255, 0.12) !important;
+  }
+
+  .about-partnership-frame__img {
+    animation: none !important;
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .about-partnership-frame--enter {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

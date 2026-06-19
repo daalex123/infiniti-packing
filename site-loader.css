@@ -1,0 +1,164 @@
+/**
+ * Site preloader — Infiniti Packaging Solutions
+ */
+
+html {
+  background-color: #f7f7f8;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+html.is-loading {
+  overflow: hidden;
+}
+
+html.is-loading body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+/* Hide page until reveal — visibility prevents paint flash */
+html.is-loading:not(.is-revealing) body > :not(#site-loader) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Fade page in while loader fades out (both classes active during exit) */
+html.is-revealing body > :not(#site-loader) {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Inner pages: header + page hero visible during load (no crossfade reveal) */
+html.is-loading:not(.is-revealing) body.inner-page > main#main-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+html.is-loading:not(.is-revealing) body.inner-page .site-header-group .header-utility-bar,
+html.is-loading:not(.is-revealing) body.inner-page .site-header,
+html.is-loading:not(.is-revealing) body.inner-page main#main-content > section.page-hero,
+html.is-loading:not(.is-revealing) body.inner-page main#main-content > section.page-hero.hero-gradient + section {
+  opacity: 1;
+  visibility: visible;
+}
+
+html.is-loading:not(.is-revealing) body.inner-page main#main-content > section:not(.page-hero) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+html.is-revealing body.inner-page .site-header-group .header-utility-bar,
+html.is-revealing body.inner-page .site-header,
+html.is-revealing body.inner-page main#main-content > section.page-hero,
+html.is-revealing body.inner-page main#main-content > section.page-hero.hero-gradient + section {
+  opacity: 1;
+  visibility: visible;
+  transition: none;
+}
+
+html.is-revealing body.inner-page main#main-content > section:not(.page-hero) {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.site-loader {
+  --loader-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7f7f8;
+  opacity: 1;
+  will-change: opacity;
+}
+
+.site-loader__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.35rem;
+  padding: 2rem;
+}
+
+.site-loader__logo {
+  display: block;
+  width: auto;
+  height: clamp(3rem, 11vw, 4.5rem);
+  max-width: min(17rem, 78vw);
+  object-fit: contain;
+  object-position: center;
+}
+
+.site-loader__progress {
+  width: min(13rem, 70vw);
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(138, 15, 77, 0.1);
+  overflow: hidden;
+}
+
+.site-loader__bar-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, #8a0f4d 0%, #a81862 55%, #00b7ff 100%);
+  transition: transform 0.4s var(--loader-ease);
+}
+
+.site-loader__label {
+  margin: 0;
+  font-family: Montserrat, system-ui, sans-serif;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.42);
+}
+
+/* Loader fades out — no visibility:hidden until removed from DOM */
+.site-loader.is-exiting {
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Pause hero entrance until reveal (prevents flash on home) */
+html.is-loading:not(.is-revealing) .home-hero-split .hero-split__content--reveal,
+html.is-loading:not(.is-revealing) .home-hero-split .hero-split__media--reveal,
+html.is-loading:not(.is-revealing) .home-hero-split .hero-anim-title__inner,
+html.is-loading:not(.is-revealing) .home-hero-split .hero-anim-lead,
+html.is-loading:not(.is-revealing) .home-hero-split .hero-anim-btn {
+  animation: none !important;
+  opacity: 0 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.is-loading:not(.is-revealing) body > :not(#site-loader) {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  html.is-revealing body > :not(#site-loader) {
+    transition: none;
+  }
+
+  .site-loader.is-exiting {
+    opacity: 0;
+    transition: none;
+  }
+}
