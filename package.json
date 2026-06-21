@@ -1,0 +1,23 @@
+{
+  "name": "infiniti-packing-tn4x",
+  "version": "1.0.0",
+  "description": "Infiniti Packaging Solutions - Global Packaging Solutions & Supply Chain Solutions",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daalex123/infiniti-packing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daalex123/infiniti-packing/issues"
+  },
+  "homepage": "https://github.com/daalex123/infiniti-packing#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
