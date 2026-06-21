@@ -1,0 +1,20 @@
+{
+  "name": "infiniti-packing-tn4x",
+  "version": "1.0.0",
+  "description": "Infiniti Packaging Solutions website",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build step needed'",
+    "lint": "echo 'No linter configured yet'"
+  },
+  "keywords": [
+    "packaging",
+    "solutions"
+  ],
+  "author": "Infiniti Packaging Solutions",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}
